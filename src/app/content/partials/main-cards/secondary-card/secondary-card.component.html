@@ -1,7 +1,9 @@
 <div class="custom-card">
     <div class="custom-card--img">
         <a href="javascript:;">
-            <img [src]="item?.cover_url" alt="{{item?.name}}" [class]="imageBorderRadiusClass">
+            <div class="image">
+                <img [src]="item?.cover_url" alt="{{item?.name}}" [class]="imageBorderRadiusClass">
+            </div>
             <span class="bg-blur">{{item?.name}}</span>
         </a>
     </div>

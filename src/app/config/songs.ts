@@ -7,7 +7,6 @@ export class SongsConfig {
   constructor(private api: ApiService) {
     this.config = {
       items: [
-        {}
       ]
     };
 
@@ -22,11 +21,11 @@ export class SongsConfig {
             {
               id: element.song_id,
               premium: true,
-              favorite: true,
+              favorite: false,
               name: element.title,
               artist: '',
               album: '',
-              url: element.web_audio_url,
+              url: 'https://streamtunes-assets.s3.us-east-1.wasabisys.com/uploads/songs/' + element.web_audio_url,
               cover_art_url: element.picture === 'other-placeholder.jpg' ? './assets/images/cover/large/3.jpg' : element.picture,
               cover_url: element.picture === 'other-placeholder.jpg' ? './assets/images/cover/large/3.jpg' : element.picture,
               ratings: 4.5,

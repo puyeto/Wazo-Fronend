@@ -10,7 +10,7 @@
             <!-- Custom Card Options Dropdown -->
             <div class="dropdown dropdown-icon">
                 <a href="javascript:;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="ion-md-more"></i>
+                    <i class="ion-md-more"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
                     <li class="dropdown-item">
@@ -38,7 +38,9 @@
         </div>
         <!-- End | Custom Card Info -->
         <a (click)="addInPlayer()">
-            <img [src]="song?.cover_url" alt="{{song?.name}}">
+            <div class="image">
+                <img [src]="song?.cover_url" alt="{{song?.name}}">
+            </div>
         </a>
     </div>
 
