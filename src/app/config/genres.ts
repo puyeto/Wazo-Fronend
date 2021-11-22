@@ -27,11 +27,8 @@ export class GenresConfig {
       } else {
         console.log(res.error);
       }
-    },
-      error => {
-        console.log(error);
-      }, () => {
-        console.log("oops something went wrong");
-      });
+    }, () => {
+      console.log("oops something went wrong");
+    });
   }
 }

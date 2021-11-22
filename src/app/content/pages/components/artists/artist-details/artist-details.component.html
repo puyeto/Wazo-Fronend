@@ -2,7 +2,7 @@
 <div class="banner bg-artists"></div>
 
 <!-- Begin | Main Container [[ Find at scss/base/core.scss ]] -->
-<div class="main-container">
+<div class="main-container" *ngIf="artistDetails && artistDetails.id">
     <!-- Begin | Section [[ Find at scss/base/core.scss ]] -->
     <div class="row section text-center text-md-left">
         <div class="col-xl-3 col-lg-4 col-sm-5">
@@ -14,10 +14,10 @@
             <div class="row pt-4">
                 <div class="col-xl-8 col-lg-6">
                     <h5>{{artistDetails.name}}</h5>
-                    <p>DOB: {{artistDetails.dob}}</p>
-                    <div class="text-warning stars">
+                    <p>{{artistDetails.no_of_songs}} Songs</p>
+                    <!-- <div class="text-warning stars">
                         <i class="la {{rating}}" *ngFor="let rating of artistDetails.ratingsView"></i>
-                    </div>
+                    </div> -->
                     <div class="mt-4">
                         <button type="button" class="btn btn-pill btn-air btn-bold btn-danger" (click)="playAllSongs()">Play All</button>
                     </div>
@@ -34,7 +34,7 @@
     <!-- End | Section -->
 
     <!-- Begin | Section [[ Find at scss/base/core.scss ]] -->
-    <div class="section">
+    <div class="section" *ngIf="artistDetails && artistDetails.songs">
         <!-- Begin | Line Tabs [[ Find at scss/framework/components/line-tabs.scss ]] -->
         <ul appLineTabs class="nav nav-tabs line-tabs line-tabs-primary text-uppercase mb-4" id="artistDetails" role="tablist">
             <li class="nav-item">
@@ -93,5 +93,5 @@
     </div>
     <!-- End | Section -->
 
-    <app-comment></app-comment>
+    <!-- <app-comment></app-comment> -->
 </div>

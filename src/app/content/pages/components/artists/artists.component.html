@@ -5,7 +5,12 @@
 <div class="main-container">
     <!-- Begin | Container header [[ Find at scss/base/core.scss ]] -->
     <div class="container-header">
-        <span class="title">{{artists.record}} Results</span>
+        <div class="d-flex flex-wrap align-items-end">
+            <div class="flex-grow-1">
+                <h4>People</h4>
+                <!-- <span class="title">{{artists.record}} Results</span> -->
+            </div>
+        </div>
         <select class="select ml-auto" name="sort" id="sort">
             <option value="0">Popular</option>
             <option value="1">A-Z</option>
@@ -18,8 +23,7 @@
     <div class="section">
         <div class="row custom-card-list">
             <div class="col-xl-custom col-lg-4 col-sm-6" *ngFor="let artist of artists.list">
-                <app-image-card [item]="artist" [imageBorderRadiusClass]="'card-img--radius-md'"
-                                [routeLink]="'/artist/' + artist.id + '/details'"></app-image-card>
+                <app-image-card [item]="artist" [imageBorderRadiusClass]="'card-img--radius-md'" [routeLink]="'/artist/' + artist.id + '/details'"></app-image-card>
             </div>
         </div>
     </div>

@@ -43,11 +43,11 @@ export class MenuConfig {
           //   page: '/music'
           // },
 
-          {
-            title: 'Stations',
-            icon: 'la la-bullseye',
-            page: '/stations'
-          },
+          // {
+          //   title: 'Stations',
+          //   icon: 'la la-bullseye',
+          //   page: '/stations'
+          // },
           // { section: 'Your Music' },
           // {
           //   title: 'Analytics',

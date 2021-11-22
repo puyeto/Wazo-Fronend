@@ -46,7 +46,7 @@
 
     <!-- Custom Card Options Dropdown -->
     <a class="custom-card--link mt-2" [routerLink]="'/song/' + song.id + '/details'">
-        <h6 class="text-truncate" title="{{song?.name}}">{{song?.name.slice(0, 30)}}</h6>
+        <h6 class="text-truncate" title="{{song?.name}}">{{song?.name.slice(0, 25)}}</h6>
         <p class="text-truncate" title="{{song?.artist}}" *ngIf="song?.artist">{{song?.artist}}</p>
     </a>
 </div>

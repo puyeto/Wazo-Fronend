@@ -16,7 +16,7 @@ export class ArtistsConfigService {
     return this.artistsConfig.config.items;
   }
 
-  getArtistByIb(id) {
+  getArtistByID(id) {
     return this.artistsList.find(artist => artist.id === id);
   }
 }

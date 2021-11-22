@@ -6,7 +6,8 @@ export class ArtistsConfig {
 
   constructor(private api: ApiService) {
     this.config = {
-      items: []
+      items: [],
+      details: {}
     };
 
     this.api.postWithAuth("home/second/list", {}).subscribe((res: any) => {
@@ -45,13 +46,49 @@ export class ArtistsConfig {
       } else {
         console.log(res.error);
       }
-    },
-      error => {
-        console.log(error);
-      }, () => {
-        console.log("oops something went wrong");
-      });
+    }, () => {
+      console.log("oops something went wrong");
+    });
 
 
+  }
+
+  GetArtistSongsByArtistID(id: number, skip = 0) {
+    this.api.postWithAuth("artist/songs", { artist_id: id, skip: skip }).subscribe((res: any) => {
+      // console.log(res);
+      if (res.success) {
+        var songs = res.data;
+        this.config.details = res.artist_detail
+
+        songs.forEach(element => {
+          this.config.items.push(
+            {
+              id: element.song_id,
+              premium: true,
+              favorite: false,
+              name: element.title,
+              artist: '',
+              album: '',
+              url: 'https://streamtunes-assets.s3.us-east-1.wasabisys.com/uploads/songs/' + element.web_audio_url,
+              cover_art_url: element.picture === 'other-placeholder.jpg' ? './assets/images/cover/large/3.jpg' : element.picture,
+              cover_url: element.picture === 'other-placeholder.jpg' ? './assets/images/cover/large/3.jpg' : element.picture,
+              ratings: 4.5,
+              composer: '',
+              lyricist: '',
+              director: '',
+              downloads: '',
+              lyrics: ''
+            }
+          );
+
+        });
+
+        return this.config
+      } else {
+        console.log(res.error);
+      }
+    }, () => {
+      console.log("oops something went wrong");
+    });
   }
 }

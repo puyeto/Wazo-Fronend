@@ -7,65 +7,99 @@ import { ArtistsConfigService } from '../../../../../core/services/artists-confi
 import { SongsConfigService } from '../../../../../core/services/songs-config.service';
 import { AudioPlayerService } from '../../../../../core/services/audio-player.service';
 import { Config } from '../../../../../config/config';
+import { ApiService } from '../../../../../service/api.service';
 
 @Component({
-    selector: 'app-artist-details',
-    templateUrl: './artist-details.component.html'
+  selector: 'app-artist-details',
+  templateUrl: './artist-details.component.html'
 })
 export class ArtistDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    artistId: number;
-    artistDetails: any;
+  artistId: number;
+  artistDetails: any;
+  skip = 0;
 
-    routeSubscription: Subscription;
+  routeSubscription: Subscription;
 
-    constructor(private route: ActivatedRoute,
-                private loadingService: LoadingService,
-                private artistsConfigService: ArtistsConfigService,
-                private songsConfigService: SongsConfigService,
-                private audioPlayerService: AudioPlayerService) {
-        this.routeSubscription = this.route.params.subscribe(param => {
-            if (param.id) {
-                this.artistId = parseInt(param.id, 10);
-                this.getArtistDetails();
+  constructor(private route: ActivatedRoute, private api: ApiService,
+    private loadingService: LoadingService,
+    private artistsConfigService: ArtistsConfigService,
+    private songsConfigService: SongsConfigService,
+    private audioPlayerService: AudioPlayerService) {
+
+    this.routeSubscription = this.route.params.subscribe(param => {
+      if (param.id) {
+        this.artistId = parseInt(param.id, 10);
+        this.getArtistDetails();
+      }
+    });
+  }
+
+  ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+    this.loadingService.stopLoading();
+  }
+
+  getArtistDetails() {
+    this.api.postWithAuth("artist/songs", { artist_id: this.artistId, skip: this.skip }).subscribe((res: any) => {
+      // console.log(res);
+      if (res.success) {
+        let songs = res.data;
+        this.artistDetails = {
+          id: res.artist_detail.artist_id,
+          name: res.artist_detail.name,
+          cover_url: res.artist_detail.picture === 'other-placeholder.jpg' ? './assets/images/cover/large/3.jpg' : res.artist_detail.picture,
+          bio: '',
+          no_of_songs: res.artist_detail.song_artists_count
+        }
+
+        this.artistDetails.songs = [];
+        songs.forEach(element => {
+          this.artistDetails.songs.push(
+            {
+              id: element.song_id,
+              premium: true,
+              favorite: false,
+              name: element.title,
+              artist: '',
+              album: '',
+              url: 'https://streamtunes-assets.s3.us-east-1.wasabisys.com/uploads/songs/' + element.web_audio_url,
+              cover_art_url: element.picture === 'other-placeholder.jpg' ? './assets/images/cover/large/3.jpg' : element.picture,
+              cover_url: element.picture === 'other-placeholder.jpg' ? './assets/images/cover/large/3.jpg' : element.picture,
+              ratings: 4.5,
+              composer: '',
+              lyricist: '',
+              director: '',
+              downloads: '',
+              lyrics: ''
             }
+          );
+
         });
-    }
 
-    ngOnInit() {
-    }
+        console.log(this.artistDetails.songs)
 
-    ngAfterViewInit() {
-        this.loadingService.stopLoading();
-    }
+      } else {
+        console.log(res.error);
+      }
+    }, () => {
+      console.log("oops something went wrong");
+    });
 
-    getArtistDetails() {
-        this.artistDetails = this.artistsConfigService.getArtistByIb(this.artistId);
-        this.artistDetails.songs = this.songsConfigService.songsList;
-        this.artistDetails.record = 124;
-        this.setRatingsView();
-    }
+    // this.artistDetails = this.artistsConfigService.getArtistByID(this.artistId);
+    // this.artistDetails.songs = this.songsConfigService.songsList;
+    this.artistDetails.record = 124;
+  }
 
-    // Set an array for ratings stars.
-    setRatingsView() {
-        this.artistDetails.ratingsView = [];
-        const ratings = Math.trunc(this.artistDetails.ratings);
-        for (let i = 0; i < ratings; i++) {
-            this.artistDetails.ratingsView.push(Config.STAR);
-        }
 
-        // Push half star in array
-        if (this.artistDetails.ratings % 1) {
-            this.artistDetails.ratingsView.push(Config.HALF_STAR);
-        }
-    }
+  playAllSongs() {
+    this.audioPlayerService.playNowPlaylist(this.artistDetails);
+  }
 
-    playAllSongs() {
-        this.audioPlayerService.playNowPlaylist(this.artistDetails);
-    }
-
-    ngOnDestroy() {
-        this.routeSubscription.unsubscribe();
-    }
+  ngOnDestroy() {
+    this.routeSubscription.unsubscribe();
+  }
 
 }
