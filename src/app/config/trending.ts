@@ -1,22 +1,25 @@
+import { ConditionalExpr } from "@angular/compiler";
 import { ApiService } from "../service/api.service";
 
-export class SongsConfig {
+export class TrendingConfig {
 
-  public config: any = {};
+  public trendConfig: any = {};
+  public trendCount = 0;
+  private skip = 0;
 
   constructor(private api: ApiService) {
-    this.config = {
+    this.trendConfig = {
       items: []
     };
 
-    this.api.postWithAuth("home/first/list", {}).subscribe((res: any) => {
+    this.api.postWithAuth("trending/songs", { skip: this.skip, type: 'trending' }).subscribe((res: any) => {
       console.log(res);
       if (res.success) {
-        var datas = res.data;
-        var trending = datas.trending.data;
+        var trending = res.data;
+        this.trendCount = res.no_of_songs;
 
         trending.forEach(element => {
-          this.config.items.push(
+          this.trendConfig.items.push(
             {
               id: element.song_id,
               premium: true,
@@ -38,7 +41,6 @@ export class SongsConfig {
 
         });
 
-        this.config.count = trending.length;
 
         // this.setState({
         //   first_section_items: response.data.data,

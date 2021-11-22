@@ -43,9 +43,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
     private eventsConfigService: EventsConfigService) { }
 
   ngOnInit() {
-    this.songsList = this.songsConfigService.songsList;
-    // Just takes first 6 index of array for ui
-    this.songsList = this.songsList.slice(0, 6);
 
     this.initTopCharts();
     this.initArtists();
@@ -71,6 +68,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
       page: '/trending',
       items: await this.songsConfigService.songsList
     };
+
+    this.songsList = await this.topCharts.items;
+    // Just takes first 6 index of array for ui
+    this.songsList = this.songsList.slice(0, 6);
   }
 
   // Initialize new release music object for section

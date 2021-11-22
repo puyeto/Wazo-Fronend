@@ -37,6 +37,8 @@ import { TotalSongsComponent } from './analytics/total-songs/total-songs.compone
 import { PurchasesComponent } from './analytics/purchases/purchases.component';
 import { StatisticsComponent } from './analytics/statistics/statistics.component';
 import { ReferralsComponent } from './analytics/referrals/referrals.component';
+import { TrendingComponent } from './trending/trending.component';
+import { TrendingDetailsComponent } from './trending/song-details/trending-details.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -73,7 +75,11 @@ const routes: Routes = [
       },
       {
         path: 'trending',
-        component: SongsComponent
+        component: TrendingComponent
+      },
+      {
+        path: 'trending/:id/details',
+        component: TrendingDetailsComponent
       },
       {
         path: 'songs',
@@ -166,7 +172,9 @@ const routes: Routes = [
     TotalSongsComponent,
     PurchasesComponent,
     StatisticsComponent,
-    ReferralsComponent
+    ReferralsComponent,
+    TrendingComponent,
+    TrendingDetailsComponent
   ],
   imports: [
     CommonModule,

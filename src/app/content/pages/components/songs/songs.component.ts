@@ -4,29 +4,29 @@ import { LoadingService } from '../../../../core/services/loading.service';
 import { SongsConfigService } from '../../../../core/services/songs-config.service';
 
 @Component({
-    selector: 'app-songs',
-    templateUrl: './songs.component.html'
+  selector: 'app-songs',
+  templateUrl: './songs.component.html'
 })
 export class SongsComponent implements OnInit, AfterViewInit {
 
-    songs: any = {};
-    gridView = false;
+  songs: any = {};
+  gridView = false;
 
-    constructor(private loadingService: LoadingService,
-                private songsConfigService: SongsConfigService) { }
+  constructor(private loadingService: LoadingService,
+    private songsConfigService: SongsConfigService) { }
 
-    ngOnInit() {
-        this.initSongs();
-    }
+  ngOnInit() {
+    this.initSongs();
+  }
 
-    ngAfterViewInit() {
-        this.loadingService.stopLoading();
-    }
+  ngAfterViewInit() {
+    this.loadingService.stopLoading();
+  }
 
-    // Initialize songs
-    initSongs() {
-        this.songs.list = this.songsConfigService.songsList;
-        this.songs.record = 5124;
-    }
+  // Initialize songs
+  initSongs() {
+    this.songs.list = this.songsConfigService.songsList;
+    this.songs.record = 0;
+  }
 
 }
