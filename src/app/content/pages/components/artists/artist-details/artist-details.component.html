@@ -6,7 +6,9 @@
     <!-- Begin | Section [[ Find at scss/base/core.scss ]] -->
     <div class="row section text-center text-md-left">
         <div class="col-xl-3 col-lg-4 col-sm-5">
-            <img [src]="artistDetails.cover_url" alt="{{artistDetails.name}}" class="card-img--radius-lg">
+            <div class="image">
+                <img [src]="artistDetails.cover_url" alt="{{artistDetails.name}}" class="card-img--radius-lg">
+            </div>
         </div>
         <div class="col-xl-9 col-lg-8 col-sm-7">
             <div class="row pt-4">
@@ -17,8 +19,7 @@
                         <i class="la {{rating}}" *ngFor="let rating of artistDetails.ratingsView"></i>
                     </div>
                     <div class="mt-4">
-                      <button type="button" class="btn btn-pill btn-air btn-bold btn-danger"
-                              (click)="playAllSongs()">Play All</button>
+                        <button type="button" class="btn btn-pill btn-air btn-bold btn-danger" (click)="playAllSongs()">Play All</button>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-6">
@@ -37,16 +38,13 @@
         <!-- Begin | Line Tabs [[ Find at scss/framework/components/line-tabs.scss ]] -->
         <ul appLineTabs class="nav nav-tabs line-tabs line-tabs-primary text-uppercase mb-4" id="artistDetails" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="song-tab" data-toggle="tab" href="#song" role="tab"
-                   aria-controls="song" aria-selected="true">Top Songs</a>
+                <a class="nav-link active" id="song-tab" data-toggle="tab" href="#song" role="tab" aria-controls="song" aria-selected="true">Top Songs</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="album-tab" data-toggle="tab" href="#album" role="tab"
-                   aria-controls="album" aria-selected="false">Top Albums</a>
+                <a class="nav-link" id="album-tab" data-toggle="tab" href="#album" role="tab" aria-controls="album" aria-selected="false">Top Albums</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="bio-tab" data-toggle="tab" href="#bio" role="tab"
-                   aria-controls="bio" aria-selected="false">Biography</a>
+                <a class="nav-link" id="bio-tab" data-toggle="tab" href="#bio" role="tab" aria-controls="bio" aria-selected="false">Biography</a>
             </li>
         </ul>
         <!-- End | Line Tabs -->
