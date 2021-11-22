@@ -1,6 +1,6 @@
-<button type="button" class="btn btn-pill btn-air btn-brand btn-icon-only" (click)="openSettings()" id="customSettings">
+<!-- <button type="button" class="btn btn-pill btn-air btn-brand btn-icon-only" (click)="openSettings()" id="customSettings">
     <i class="ion-md-settings"></i>
-</button>
+</button> -->
 
 <div id="settingsWrapper" #settingsWrapper>
     <header>
@@ -12,28 +12,24 @@
             <li class="custom-list--item">
                 <label for="to0">Dark Theme</label>
                 <div class="custom-control custom-checkbox ml-auto">
-                    <input type="checkbox" class="custom-control-input" id="to0" (change)="setThemeSkin($event)"
-                           [checked]="themeSkin.theme === 'dark'">
+                    <input type="checkbox" class="custom-control-input" id="to0" (change)="setThemeSkin($event)" [checked]="themeSkin.theme === 'dark'">
                     <label class="custom-control-label" for="to0"></label>
                 </div>
             </li>
             <li class="custom-list-group--item-separator"></li>
             <li class="custom-list-group--item custom-list-group--item-header">Header Colors</li>
             <li class="custom-list--item">
-                <a *ngFor="let color of themeClass; let i = index" class="header-skin bg-{{color}}"
-                   [ngClass]="i === config.config.themeSkin.header ? 'active' : ''" (click)="setHeaderSkin(i)"></a>
+                <a *ngFor="let color of themeClass; let i = index" class="header-skin bg-{{color}}" [ngClass]="i === config.config.themeSkin.header ? 'active' : ''" (click)="setHeaderSkin(i)"></a>
             </li>
             <li class="custom-list-group--item-separator"></li>
             <li class="custom-list-group--item custom-list-group--item-header">Sidebar Colors</li>
             <li class="custom-list--item">
-                <a *ngFor="let color of themeClass; let i = index" class="header-skin bg-{{color}}"
-                   [ngClass]="i === config.config.themeSkin.sidebar ? 'active' : ''" (click)="setSidebarSkin(i)"></a>
+                <a *ngFor="let color of themeClass; let i = index" class="header-skin bg-{{color}}" [ngClass]="i === config.config.themeSkin.sidebar ? 'active' : ''" (click)="setSidebarSkin(i)"></a>
             </li>
             <li class="custom-list-group--item-separator"></li>
             <li class="custom-list-group--item custom-list-group--item-header">Player Colors</li>
             <li class="custom-list--item">
-                <a *ngFor="let color of themeClass; let i = index" class="header-skin bg-{{color}}"
-                   [ngClass]="i === config.config.themeSkin.player ? 'active' : ''" (click)="setPlayerSkin(i)"></a>
+                <a *ngFor="let color of themeClass; let i = index" class="header-skin bg-{{color}}" [ngClass]="i === config.config.themeSkin.player ? 'active' : ''" (click)="setPlayerSkin(i)"></a>
             </li>
         </ul>
     </div>

@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   searchSubscription: Subscription;
   skinSubscription: Subscription;
+  themeSkin = this.localStorageService.getThemeSkin();
 
   constructor(@Inject(DOCUMENT) private document: Document,
     private searchService: SearchService,
@@ -37,9 +38,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.currentUser = this.localStorageService.getCurrentUser();
-    const themeSkin = this.localStorageService.getThemeSkin();
-    if (themeSkin) {
-      this.headerClasses = 'bg-' + Config.THEME_CLASSES[themeSkin.header];
+    if (this.themeSkin) {
+      this.headerClasses = 'bg-' + Config.THEME_CLASSES[this.themeSkin.header];
     }
 
     this.searchSubscription = this.searchService.searchStatus.subscribe((value) => {
@@ -85,6 +85,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
     if (this.skinSubscription) {
       this.skinSubscription.unsubscribe();
     }
+  }
+
+  setThemeSkin(event) {
+    if (event.target.checked) {
+      this.themeSkin.theme = 'dark';
+    } else if (!event.target.checked) {
+      this.themeSkin.theme = 'light';
+    }
+    this.skinService.skin = this.themeSkin;
   }
 
 }

@@ -72,7 +72,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     setTimeout(async () => {
       this.songsList = await this.topCharts.items;
       // Just takes first 6 index of array for ui
-      this.songsList = this.songsList.slice(0, 6);
+      this.songsList = this.songsList.slice(0, 7);
     }, 2000);
   }
 
