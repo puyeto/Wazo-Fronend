@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
+import { ApiService } from 'src/app/service/api.service';
 
 import { ArtistsConfig } from '../../config/artists';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class ArtistsConfigService {
 
-    public artistsConfig: ArtistsConfig = new ArtistsConfig();
+  public artistsConfig: ArtistsConfig = new ArtistsConfig(this.api);
 
-    constructor() { }
+  constructor(private api: ApiService) { }
 
-    get artistsList() {
-        return this.artistsConfig.config.items;
-    }
+  get artistsList() {
+    return this.artistsConfig.config.items;
+  }
 
-    getArtistByIb(id) {
-        return this.artistsList.find(artist => artist.id === id);
-    }
+  getArtistByIb(id) {
+    return this.artistsList.find(artist => artist.id === id);
+  }
 }

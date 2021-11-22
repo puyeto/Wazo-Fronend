@@ -39,146 +39,150 @@ import { StatisticsComponent } from './analytics/statistics/statistics.component
 import { ReferralsComponent } from './analytics/referrals/referrals.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-    suppressScrollX: true
+  suppressScrollX: true
 };
 
 const routes: Routes = [
-    {
+  {
+    path: '',
+    component: ComponentsComponent,
+    children: [
+      {
         path: '',
-        component: ComponentsComponent,
-        children: [
-            {
-                path: '',
-                component: HomeComponent
-            },
-            {
-                path: 'home',
-                component: HomeComponent,
-            },
-            {
-                path: 'genres',
-                component: GenresComponent,
-            },
-            {
-                path: 'music',
-                component: MusicComponent,
-            },
-            {
-                path: 'artists',
-                component: ArtistsComponent
-            },
-            {
-                path: 'artist/:id/details',
-                component: ArtistDetailsComponent,
-            },
-            {
-                path: 'songs',
-                component: SongsComponent
-            },
-            {
-                path: 'song/:id/details',
-                component: SongDetailsComponent
-            },
-            {
-                path: 'albums',
-                component: AlbumsComponent
-            },
-            {
-                path: 'album/:id/details',
-                component: AlbumDetailsComponent
-            },
-            {
-                path: 'add-music',
-                component: AddMusicComponent
-            },
-            {
-                path: 'stations',
-                component: StationsComponent
-            },
-            {
-                path: 'analytics',
-                component: AnalyticsComponent
-            },
-            {
-                path: 'favorites',
-                component: FavoritesComponent
-            },
-            {
-                path: 'history',
-                component: HistoryComponent
-            },
-            {
-                path: 'events',
-                component: EventsComponent
-            },
-            {
-                path: 'event/:id/details',
-                component: EventDetailsComponent
-            },
-            {
-                path: 'add-event',
-                component: AddEventComponent
-            },
-            {
-                path: 'profile',
-                component: UserProfileComponent
-            },
-            {
-                path: 'plan',
-                component: UserPlanComponent
-            },
-            {
-                path: 'settings',
-                component: SettingsComponent
-            }
-        ]
-    },
+        component: HomeComponent
+      },
+      {
+        path: 'home',
+        component: HomeComponent,
+      },
+      {
+        path: 'categories',
+        component: GenresComponent,
+      },
+      {
+        path: 'music',
+        component: MusicComponent,
+      },
+      {
+        path: 'artists',
+        component: ArtistsComponent
+      },
+      {
+        path: 'artist/:id/details',
+        component: ArtistDetailsComponent,
+      },
+      {
+        path: 'trending',
+        component: SongsComponent
+      },
+      {
+        path: 'songs',
+        component: SongsComponent
+      },
+      {
+        path: 'song/:id/details',
+        component: SongDetailsComponent
+      },
+      {
+        path: 'podcasts',
+        component: AlbumsComponent
+      },
+      {
+        path: 'album/:id/details',
+        component: AlbumDetailsComponent
+      },
+      {
+        path: 'add-music',
+        component: AddMusicComponent
+      },
+      {
+        path: 'stations',
+        component: StationsComponent
+      },
+      {
+        path: 'analytics',
+        component: AnalyticsComponent
+      },
+      {
+        path: 'favorites',
+        component: FavoritesComponent
+      },
+      {
+        path: 'history',
+        component: HistoryComponent
+      },
+      {
+        path: 'events',
+        component: EventsComponent
+      },
+      {
+        path: 'event/:id/details',
+        component: EventDetailsComponent
+      },
+      {
+        path: 'add-event',
+        component: AddEventComponent
+      },
+      {
+        path: 'profile',
+        component: UserProfileComponent
+      },
+      {
+        path: 'plan',
+        component: UserPlanComponent
+      },
+      {
+        path: 'settings',
+        component: SettingsComponent
+      }
+    ]
+  },
 ];
 
 @NgModule({
-    declarations: [
-        ComponentsComponent,
-        HomeComponent,
-        GenresComponent,
-        MusicComponent,
-        ArtistsComponent,
-        ArtistDetailsComponent,
-        SongsComponent,
-        SongDetailsComponent,
-        StationsComponent,
-        FavoritesComponent,
-        HistoryComponent,
-        EventsComponent,
-        EventDetailsComponent,
-        AddEventComponent,
-        AddMusicComponent,
-        UserProfileComponent,
-        UserPlanComponent,
-        SettingsComponent,
-        AlbumsComponent,
-        AlbumDetailsComponent,
-        AnalyticsComponent,
-        TotalUserComponent,
-        TotalSongsComponent,
-        PurchasesComponent,
-        StatisticsComponent,
-        ReferralsComponent
-    ],
-    imports: [
-        CommonModule,
-        FormsModule,
-        PerfectScrollbarModule,
-        PartialsModule,
-        CoreModule,
-        LayoutModule,
-        ChartsModule,
-        RouterModule.forChild(routes)
-    ],
-    providers: [
-        {
-            provide: PERFECT_SCROLLBAR_CONFIG,
-            useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-        }
-    ]
+  declarations: [
+    ComponentsComponent,
+    HomeComponent,
+    GenresComponent,
+    MusicComponent,
+    ArtistsComponent,
+    ArtistDetailsComponent,
+    SongsComponent,
+    SongDetailsComponent,
+    StationsComponent,
+    FavoritesComponent,
+    HistoryComponent,
+    EventsComponent,
+    EventDetailsComponent,
+    AddEventComponent,
+    AddMusicComponent,
+    UserProfileComponent,
+    UserPlanComponent,
+    SettingsComponent,
+    AlbumsComponent,
+    AlbumDetailsComponent,
+    AnalyticsComponent,
+    TotalUserComponent,
+    TotalSongsComponent,
+    PurchasesComponent,
+    StatisticsComponent,
+    ReferralsComponent
+  ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    PerfectScrollbarModule,
+    PartialsModule,
+    CoreModule,
+    LayoutModule,
+    ChartsModule,
+    RouterModule.forChild(routes)
+  ],
+  providers: [
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    }
+  ]
 })
 export class ComponentsModule { }

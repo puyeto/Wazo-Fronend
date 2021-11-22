@@ -7,6 +7,7 @@ import { PlaylistConfigService } from '../../../../core/services/playlist-config
 import { RadioConfigService } from '../../../../core/services/radio-config.service';
 import { GenresConfigService } from '../../../../core/services/genres-config.service';
 import { EventsConfigService } from '../../../../core/services/events-config.service';
+import { AlbumsConfigService } from 'src/app/core/services/albums-config.service';
 
 
 @Component({
@@ -27,6 +28,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   playlist: any = {};
   radio: any = {};
   genres: any = {};
+  podcasts: any = {};
 
   mainEvent: any = {};
   secondaryEvents: any = [];
@@ -34,6 +36,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   constructor(private loadingService: LoadingService,
     private artistsConfigService: ArtistsConfigService,
     private songsConfigService: SongsConfigService,
+    private albumConfigService: AlbumsConfigService,
     private playlistConfigService: PlaylistConfigService,
     private radioConfigService: RadioConfigService,
     private genresConfigService: GenresConfigService,
@@ -45,13 +48,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.songsList = this.songsList.slice(0, 6);
 
     this.initTopCharts();
+    this.initArtists();
+    this.initGenres();
+    this.initPodcasts();
+
     this.initNewRelease();
     this.initEvents();
-    this.initArtists();
     this.initRetro();
     this.initPlaylist();
     this.initRadio();
-    this.initGenres();
   }
 
   ngAfterViewInit() {
@@ -63,7 +68,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.topCharts = {
       title: 'Trending',
       subTitle: 'Listen top chart',
-      page: '/songs',
+      page: '/trending',
       items: await this.songsConfigService.songsList
     };
   }
@@ -87,7 +92,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   // Initialize music artists object for section
   initArtists() {
     this.artists = {
-      title: 'Featured Artists',
+      title: 'Featured People',
       subTitle: 'Select you best to listen',
       page: '/artists',
       items: this.artistsConfigService.artistsList
@@ -133,10 +138,19 @@ export class HomeComponent implements OnInit, AfterViewInit {
   // Initialize music genres object for section
   initGenres() {
     this.genres = {
-      title: 'Genres',
-      subTitle: 'Select you genre',
+      title: 'Top Categories',
+      subTitle: 'Select category to listen',
       page: '/genres',
       items: this.genresConfigService.genresList
+    };
+  }
+
+  initPodcasts() {
+    this.podcasts = {
+      title: 'Podcasts',
+      subTitle: 'Select podcasts to listen',
+      page: '/podcasts',
+      items: this.albumConfigService.albumsList
     };
   }
 

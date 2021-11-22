@@ -15,12 +15,12 @@ export class MenuConfig {
           {
             title: 'Trending',
             icon: 'la la-fire',
-            page: '/home'
+            page: '/trending'
           },
           {
-            title: 'Category',
+            title: 'Categories',
             icon: 'la la-files-o',
-            page: '/category'
+            page: '/categories'
           },
           {
             title: 'People',
@@ -30,57 +30,57 @@ export class MenuConfig {
           {
             title: 'Podcasts',
             icon: 'la la-microphone',
-            page: '/music'
+            page: '/podcasts'
           },
-          {
-            title: 'Genres',
-            icon: 'la la-diamond',
-            page: '/genres'
-          },
-          {
-            title: 'Free Music',
-            icon: 'la la-music',
-            page: '/music'
-          },
+          // {
+          //   title: 'Genres',
+          //   icon: 'la la-diamond',
+          //   page: '/genres'
+          // },
+          // {
+          //   title: 'Free Music',
+          //   icon: 'la la-music',
+          //   page: '/music'
+          // },
 
           {
             title: 'Stations',
             icon: 'la la-bullseye',
             page: '/stations'
           },
-          { section: 'Your Music' },
-          {
-            title: 'Analytics',
-            icon: 'la la-bar-chart',
-            page: '/analytics'
-          },
-          {
-            title: 'Favorites',
-            icon: 'la la-heart-o',
-            page: '/favorites'
-          },
-          {
-            title: 'History',
-            icon: 'la la-history',
-            page: '/history'
-          },
-          { section: 'Music Events' },
-          {
-            title: 'Events',
-            icon: 'la la-calendar',
-            page: '/events'
-          },
-          {
-            title: 'Add Event',
-            icon: 'la la-home',
-            page: '/add-event'
-          },
-          { section: 'Extra Pages' },
-          {
-            title: 'Error',
-            icon: 'la la-times-circle-o',
-            page: '/404'
-          }
+          // { section: 'Your Music' },
+          // {
+          //   title: 'Analytics',
+          //   icon: 'la la-bar-chart',
+          //   page: '/analytics'
+          // },
+          // {
+          //   title: 'Favorites',
+          //   icon: 'la la-heart-o',
+          //   page: '/favorites'
+          // },
+          // {
+          //   title: 'History',
+          //   icon: 'la la-history',
+          //   page: '/history'
+          // },
+          // { section: 'Music Events' },
+          // {
+          //   title: 'Events',
+          //   icon: 'la la-calendar',
+          //   page: '/events'
+          // },
+          // {
+          //   title: 'Add Event',
+          //   icon: 'la la-home',
+          //   page: '/add-event'
+          // },
+          // { section: 'Extra Pages' },
+          // {
+          //   title: 'Error',
+          //   icon: 'la la-times-circle-o',
+          //   page: '/404'
+          // }
         ]
       },
       userMenu: {

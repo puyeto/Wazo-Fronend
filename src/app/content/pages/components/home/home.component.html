@@ -8,6 +8,10 @@
     <app-section *ngIf="topCharts" [section]="topCharts" [carouselButtonPositionClass]="carouselArrowPosClass3" [primaryCard]="true" [showImageOptions]="true">
     </app-section>
 
+    <!-- podcasts -->
+    <app-section *ngIf="podcasts" [section]="podcasts" [carouselButtonPositionClass]="carouselArrowPosClass1" [imageCard]="true" [artistRouteLink]="true">
+    </app-section>
+
     <div class="row">
         <!-- Begin | Events -->
         <div class="section col-12 col-xl-7">
@@ -70,27 +74,29 @@
     </div>
 
     <!-- New Release -->
-    <app-section *ngIf="newRelease" [section]="newRelease" [carouselButtonPositionClass]="carouselArrowPosClass3" [primaryCard]="true" [showImageOptions]="true">
-    </app-section>
+    <!-- <app-section *ngIf="newRelease" [section]="newRelease" [carouselButtonPositionClass]="carouselArrowPosClass3" [primaryCard]="true" [showImageOptions]="true">
+    </app-section> -->
 
     <!-- Artists -->
-    <app-section *ngIf="artists" [section]="artists" [carouselButtonPositionClass]="carouselArrowPosClass2" [imageCard]="true" [artistRouteLink]="true">
-    </app-section>
-
-    <!-- Playlist -->
-    <app-section *ngIf="playlist" [section]="playlist" [carouselButtonPositionClass]="carouselArrowPosClass1" [secondaryCard]="true" [fourSlideCarousel]="true">
-    </app-section>
-
-    <!-- Retro -->
-    <app-section *ngIf="retro" [section]="retro" [carouselButtonPositionClass]="carouselArrowPosClass3" [primaryCard]="true" [showImageOptions]="true">
-    </app-section>
-
-    <!-- Radio -->
-    <app-section *ngIf="radio" [section]="radio" [carouselButtonPositionClass]="carouselArrowPosClass2" [imageCard]="true">
+    <app-section *ngIf="artists" [section]="artists" [carouselButtonPositionClass]="carouselArrowPosClass1" [imageCard]="true" [artistRouteLink]="true">
     </app-section>
 
     <!-- Genres -->
-    <app-section *ngIf="genres" [section]="genres" [carouselButtonPositionClass]="carouselArrowPosClass1" [secondaryCard]="true">
+    <app-section *ngIf="genres" [section]="genres" [carouselButtonPositionClass]="carouselArrowPosClass1" [imageCard]="true" [artistRouteLink]="true">
     </app-section>
+
+    <!-- Playlist -->
+    <!-- <app-section *ngIf="playlist" [section]="playlist" [carouselButtonPositionClass]="carouselArrowPosClass1" [secondaryCard]="true" [fourSlideCarousel]="true">
+    </app-section> -->
+
+    <!-- Retro -->
+    <!-- <app-section *ngIf="retro" [section]="retro" [carouselButtonPositionClass]="carouselArrowPosClass3" [primaryCard]="true" [showImageOptions]="true">
+    </app-section> -->
+
+    <!-- Radio -->
+    <!-- <app-section *ngIf="radio" [section]="radio" [carouselButtonPositionClass]="carouselArrowPosClass2" [imageCard]="true">
+    </app-section> -->
+
+
 </div>
 <!-- End | Main Container -->
