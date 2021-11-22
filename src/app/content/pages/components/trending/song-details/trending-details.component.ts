@@ -38,7 +38,7 @@ export class TrendingDetailsComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   getSongDetails() {
-    this.songDetails = this.songsConfigService.getSongByIb(this.songId);
+    this.songDetails = this.songsConfigService.getSongByID(this.songId);
     this.setRatingsView();
   }
 
@@ -61,7 +61,9 @@ export class TrendingDetailsComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   ngOnDestroy() {
-    this.routeSubscription.unsubscribe();
+    if (this.routeSubscription) {
+      this.routeSubscription.unsubscribe();
+    }
   }
 
 }

@@ -20,7 +20,7 @@ export class SongsConfigService {
     return this.songsConfig.config.items[0];
   }
 
-  getSongByIb(id) {
+  getSongByID(id) {
     return this.songsList.find(song => song.id === id);
   }
 }
