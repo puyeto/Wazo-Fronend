@@ -38,7 +38,9 @@
         </div>
         <!-- End | Custom Card Info -->
         <a (click)="addInPlayer()">
-            <img [src]="song?.cover_url" alt="{{song?.name}}">
+            <div class="image">
+                <img [src]="song?.cover_url" alt="{{song?.name}}">
+            </div>
         </a>
     </div>
 

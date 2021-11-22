@@ -69,9 +69,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
       items: await this.songsConfigService.songsList
     };
 
-    this.songsList = await this.topCharts.items;
-    // Just takes first 6 index of array for ui
-    this.songsList = this.songsList.slice(0, 6);
+    setTimeout(async () => {
+      this.songsList = await this.topCharts.items;
+      // Just takes first 6 index of array for ui
+      this.songsList = this.songsList.slice(0, 6);
+    }, 2000);
   }
 
   // Initialize new release music object for section
