@@ -14,7 +14,7 @@
             <div class="row pt-4">
                 <div class="col-xl-8 col-lg-6">
                     <h5>{{artistDetails.name}}</h5>
-                    <p>{{artistDetails.no_of_songs}} Songs</p>
+                    <p>{{artistDetails.no_of_songs == 1 ? artistDetails.no_of_songs + ' Episode' : artistDetails.no_of_songs + ' Episodes'}} </p>
                     <!-- <div class="text-warning stars">
                         <i class="la {{rating}}" *ngFor="let rating of artistDetails.ratingsView"></i>
                     </div> -->

@@ -3,10 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { LoadingService } from '../../../../../core/services/loading.service';
-import { ArtistsConfigService } from '../../../../../core/services/artists-config.service';
-import { SongsConfigService } from '../../../../../core/services/songs-config.service';
 import { AudioPlayerService } from '../../../../../core/services/audio-player.service';
-import { Config } from '../../../../../config/config';
 import { ApiService } from '../../../../../service/api.service';
 
 @Component({
@@ -23,8 +20,6 @@ export class ArtistDetailsComponent implements OnInit, AfterViewInit, OnDestroy 
 
   constructor(private route: ActivatedRoute, private api: ApiService,
     private loadingService: LoadingService,
-    private artistsConfigService: ArtistsConfigService,
-    private songsConfigService: SongsConfigService,
     private audioPlayerService: AudioPlayerService) {
 
     this.routeSubscription = this.route.params.subscribe(param => {
@@ -46,7 +41,7 @@ export class ArtistDetailsComponent implements OnInit, AfterViewInit, OnDestroy 
     this.api.postWithAuth("artist/songs", { artist_id: this.artistId, skip: this.skip }).subscribe((res: any) => {
       // console.log(res);
       if (res.success) {
-        let songs = res.data;
+
         this.artistDetails = {
           id: res.artist_detail.artist_id,
           name: res.artist_detail.name,
@@ -55,6 +50,7 @@ export class ArtistDetailsComponent implements OnInit, AfterViewInit, OnDestroy 
           no_of_songs: res.artist_detail.song_artists_count
         }
 
+        let songs = res.data;
         this.artistDetails.songs = [];
         songs.forEach(element => {
           this.artistDetails.songs.push(
@@ -78,8 +74,6 @@ export class ArtistDetailsComponent implements OnInit, AfterViewInit, OnDestroy 
           );
 
         });
-
-        console.log(this.artistDetails.songs)
 
       } else {
         console.log(res.error);

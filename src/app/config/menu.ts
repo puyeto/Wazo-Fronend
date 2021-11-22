@@ -18,9 +18,9 @@ export class MenuConfig {
             page: '/trending'
           },
           {
-            title: 'Categories',
-            icon: 'la la-files-o',
-            page: '/categories'
+            title: 'Podcasts',
+            icon: 'la la-microphone',
+            page: '/podcasts'
           },
           {
             title: 'People',
@@ -28,10 +28,11 @@ export class MenuConfig {
             page: '/artists'
           },
           {
-            title: 'Podcasts',
-            icon: 'la la-microphone',
-            page: '/podcasts'
+            title: 'Categories',
+            icon: 'la la-files-o',
+            page: '/categories'
           },
+
           // {
           //   title: 'Genres',
           //   icon: 'la la-diamond',

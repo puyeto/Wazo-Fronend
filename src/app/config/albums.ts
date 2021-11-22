@@ -3,6 +3,7 @@ import { ApiService } from "../service/api.service";
 export class AlbumsConfig {
 
   public config: any = {};
+  public albumCount = 0;
 
   constructor(private api: ApiService) {
     this.config = {

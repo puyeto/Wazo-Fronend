@@ -5,7 +5,12 @@
 <div class="main-container">
     <!-- Begin | Container header [[ Find at scss/base/core.scss ]] -->
     <div class="container-header">
-        <span class="title">{{albums.record}} Results</span>
+        <div class="d-flex flex-wrap align-items-end">
+            <div class="flex-grow-1">
+                <h4>Podcasts</h4>
+                <span class="title">{{albums.record}} Results</span>
+            </div>
+        </div>
         <div class="ml-auto d-flex align-items-center">
             <select class="select" name="sort" id="sort">
                 <option selected="">Popular</option>
@@ -20,8 +25,7 @@
     <div class="section">
         <div class="row custom-card-list">
             <div class="col-xl-2 col-lg-4 col-sm-6" *ngFor="let album of albums.list">
-                <app-image-card [item]="album" [routerLink]="'/album/' + album.id + '/details'"
-                                [imageBorderRadiusClass]="'card-img--radius-md'"></app-image-card>
+                <app-image-card [item]="album" [routerLink]="'/album/' + album.id + '/details'" [imageBorderRadiusClass]="'card-img--radius-md'"></app-image-card>
             </div>
         </div>
     </div>

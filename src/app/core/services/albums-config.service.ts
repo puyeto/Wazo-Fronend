@@ -16,6 +16,10 @@ export class AlbumsConfigService {
     return this.albumsConfig.config.items;
   }
 
+  get albumCount() {
+    return this.albumsConfig.albumCount;
+  }
+
   getAlbumByIb(id) {
     return this.albumsList.find(album => album.id === id);
   }
