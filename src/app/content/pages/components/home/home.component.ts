@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   topCharts: any = {};
   newRelease: any = {};
   artists: any = {};
+  artistList: any = [];
   retro: any = {};
   playlist: any = {};
   radio: any = {};
@@ -95,11 +96,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
   // Initialize music artists object for section
   initArtists() {
     this.artists = {
-      title: 'Featured People',
+      title: 'People',
       subTitle: 'Select you best to listen',
       page: '/artists',
       items: this.artistsConfigService.artistsList
     };
+
+    setTimeout(async () => {
+      this.artistList = await this.artists.items;
+      // Just takes first 6 index of array for ui
+      this.artistList = this.artistList.slice(0, 7);
+    }, 2000);
   }
 
   // Initialize retro music object for section

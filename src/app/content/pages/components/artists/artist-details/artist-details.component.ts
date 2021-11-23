@@ -81,10 +81,6 @@ export class ArtistDetailsComponent implements OnInit, AfterViewInit, OnDestroy 
     }, () => {
       console.log("oops something went wrong");
     });
-
-    // this.artistDetails = this.artistsConfigService.getArtistByID(this.artistId);
-    // this.artistDetails.songs = this.songsConfigService.songsList;
-    this.artistDetails.record = 124;
   }
 
 
