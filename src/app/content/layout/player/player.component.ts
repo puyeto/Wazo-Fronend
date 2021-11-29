@@ -27,11 +27,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
     private skinService: SkinService) { }
 
   ngOnInit() {
-    this.song = this.songsConfigService.defaultSong;
-
-    Amplitude.init({
-      songs: [this.song]
-    });
+    this.initPlayer()
 
     const themeSkin = this.localStorageService.getThemeSkin();
     if (themeSkin) {
@@ -42,6 +38,15 @@ export class PlayerComponent implements OnInit, OnDestroy {
       if (skin) {
         this.playerClass = 'player-' + Config.THEME_CLASSES[skin.player];
       }
+    });
+  }
+
+  async initPlayer() {
+    this.song = await this.songsConfigService.defaultSong;
+
+    Amplitude.init({
+      songs: [this.song],
+      shuffle_on: true
     });
   }
 

@@ -16,7 +16,7 @@ export class CategoryDetailsComponent implements OnInit, AfterViewInit, OnDestro
   categoryDetails: any;
   skip = 0;
   categoryBGColor = '#fff';
-  categoryBGImage = 'url(hoe.jpg)';
+  categoryBGImage = 'url(home.jpg)';
 
   routeSubscription: Subscription;
 
@@ -87,7 +87,7 @@ export class CategoryDetailsComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   playAllSongs() {
-    this.audioPlayerService.playNowPlaylist(this.categoryDetails.songs);
+    this.audioPlayerService.playNowPlaylist(this.categoryDetails);
   }
 
   ngOnDestroy() {

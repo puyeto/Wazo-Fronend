@@ -21,7 +21,7 @@ export class SongsConfigService {
   }
 
   get defaultSong() {
-    return this.songsConfig.config.items[0];
+    return this.songsConfig.config.items;
   }
 
   getSongByID(id) {

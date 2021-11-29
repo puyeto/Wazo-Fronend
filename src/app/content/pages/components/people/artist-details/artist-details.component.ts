@@ -16,7 +16,7 @@ export class ArtistDetailsComponent implements OnInit, AfterViewInit, OnDestroy 
   artistDetails: any;
   skip = 0;
   peopleBGColor = '#fff';
-  peoplehomeBGImage = 'url(hoe.jpg)';
+  peoplehomeBGImage = 'url(home.jpg)';
 
   routeSubscription: Subscription;
 

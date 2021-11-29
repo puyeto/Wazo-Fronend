@@ -21,7 +21,7 @@ export class TrendingConfigService {
   }
 
   get defaultSong() {
-    return this.trendingConfig.trendConfig.items[0];
+    return this.trendingConfig.trendConfig.items;
   }
 
   getSongByIb(id) {

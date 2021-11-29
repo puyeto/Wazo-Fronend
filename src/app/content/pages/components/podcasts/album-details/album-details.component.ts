@@ -16,7 +16,7 @@ export class AlbumDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   albumDetails: any;
   skip = 0;
   podcastBGColor = '#fff';
-  podcasthomeBGImage = 'url(hoe.jpg)';
+  podcasthomeBGImage = 'url(home.jpg)';
 
   routeSubscription: Subscription;
 

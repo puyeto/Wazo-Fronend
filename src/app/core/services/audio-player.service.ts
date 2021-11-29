@@ -2,29 +2,29 @@ import { Injectable } from '@angular/core';
 import * as Amplitude from 'amplitudejs';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class AudioPlayerService {
 
-    constructor() { }
+  constructor() { }
 
-    playSong(song) {
-        Amplitude.removeSong(0);
-        Amplitude.playNow(song);
-    }
+  playSong(song) {
+    Amplitude.removeSong(0);
+    Amplitude.playNow(song);
+  }
 
-    playlistKayName(playlistName) {
-        return playlistName.toLowerCase().replace(' ', '_');
-    }
+  playlistKayName(playlistName) {
+    return playlistName.toLowerCase().replace(' ', '_');
+  }
 
-    playNowPlaylist(playlist, songIndex = 0) {
-        const listName = this.playlistKayName(playlist.name);
-        Amplitude.removeSong(0);
-        if (!Amplitude.getActivePlaylist()) {
-            Amplitude.addPlaylist(listName, {name: listName}, playlist.songs);
-        }
-        Amplitude.playPlaylistSongAtIndex(songIndex, listName);
-        const song = playlist.songs[songIndex];
-        Amplitude.playNow(song);
+  playNowPlaylist(playlist, songIndex = 0) {
+    const listName = this.playlistKayName(playlist.name);
+    Amplitude.removeSong(0);
+    if (!Amplitude.getActivePlaylist()) {
+      Amplitude.addPlaylist(listName, { name: listName }, playlist.songs);
     }
+    Amplitude.playPlaylistSongAtIndex(songIndex, listName);
+    const song = playlist.songs[songIndex];
+    Amplitude.playNow(song);
+  }
 }
