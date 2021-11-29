@@ -13,10 +13,10 @@ import { HomeComponent } from './home/home.component';
 import { PartialsModule } from '../../partials/partials.module';
 import { CoreModule } from '../../../core/core.module';
 import { LayoutModule } from '../../layout/layout.module';
-import { GenresComponent } from './genres/genres.component';
+import { GenresComponent } from './categories/genres.component';
 import { MusicComponent } from './music/music.component';
-import { ArtistsComponent } from './artists/artists.component';
-import { ArtistDetailsComponent } from './artists/artist-details/artist-details.component';
+import { ArtistsComponent } from './people/artists.component';
+import { ArtistDetailsComponent } from './people/artist-details/artist-details.component';
 import { SongsComponent } from './songs/songs.component';
 import { SongDetailsComponent } from './songs/song-details/song-details.component';
 import { StationsComponent } from './stations/stations.component';
@@ -29,8 +29,8 @@ import { AddMusicComponent } from './songs/add-music/add-music.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { UserPlanComponent } from './user/user-plan/user-plan.component';
 import { SettingsComponent } from './user/settings/settings.component';
-import { AlbumsComponent } from './albums/albums.component';
-import { AlbumDetailsComponent } from './albums/album-details/album-details.component';
+import { AlbumsComponent } from './podcasts/albums.component';
+import { AlbumDetailsComponent } from './podcasts/album-details/album-details.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { TotalUserComponent } from './analytics/total-user/total-user.component';
 import { TotalSongsComponent } from './analytics/total-songs/total-songs.component';
@@ -39,6 +39,7 @@ import { StatisticsComponent } from './analytics/statistics/statistics.component
 import { ReferralsComponent } from './analytics/referrals/referrals.component';
 import { TrendingComponent } from './trending/trending.component';
 import { TrendingDetailsComponent } from './trending/song-details/trending-details.component';
+import { CategoryDetailsComponent } from './categories/category-details/category-details.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -60,6 +61,10 @@ const routes: Routes = [
       {
         path: 'categories',
         component: GenresComponent,
+      },
+      {
+        path: 'category/:id/details',
+        component: CategoryDetailsComponent,
       },
       {
         path: 'music',
@@ -174,7 +179,8 @@ const routes: Routes = [
     StatisticsComponent,
     ReferralsComponent,
     TrendingComponent,
-    TrendingDetailsComponent
+    TrendingDetailsComponent,
+    CategoryDetailsComponent
   ],
   imports: [
     CommonModule,

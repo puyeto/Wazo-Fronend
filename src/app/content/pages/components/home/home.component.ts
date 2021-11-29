@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   retro: any = {};
   playlist: any = {};
   radio: any = {};
-  genres: any = {};
+  categories: any = {};
   podcasts: any = {};
 
   mainEvent: any = {};
@@ -49,14 +49,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     this.initTopCharts();
     this.initArtists();
-    this.initGenres();
+    this.initCategories();
     this.initPodcasts();
 
-    this.initNewRelease();
     this.initEvents();
-    this.initRetro();
+
+    // this.initNewRelease();
+    // this.initRetro();
     this.initPlaylist();
-    this.initRadio();
+    // this.initRadio();
   }
 
   ngAfterViewInit() {
@@ -149,11 +150,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   // Initialize music genres object for section
-  initGenres() {
-    this.genres = {
+  initCategories() {
+    this.categories = {
       title: 'Top Categories',
       subTitle: 'Select category to listen',
-      page: '/genres',
+      page: '/categories',
       items: this.genresConfigService.genresList
     };
   }
