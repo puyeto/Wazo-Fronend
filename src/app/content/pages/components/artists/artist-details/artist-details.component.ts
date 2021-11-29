@@ -15,6 +15,8 @@ export class ArtistDetailsComponent implements OnInit, AfterViewInit, OnDestroy 
   artistId: number;
   artistDetails: any;
   skip = 0;
+  peopleBGColor = '#fff';
+  peoplehomeBGImage = 'url(hoe.jpg)';
 
   routeSubscription: Subscription;
 
@@ -50,6 +52,8 @@ export class ArtistDetailsComponent implements OnInit, AfterViewInit, OnDestroy 
           no_of_songs: res.artist_detail.song_artists_count
         }
 
+        this.peoplehomeBGImage = 'url(' + this.artistDetails.cover_url + ')';
+
         let songs = res.data;
         this.artistDetails.songs = [];
         songs.forEach(element => {
@@ -59,6 +63,7 @@ export class ArtistDetailsComponent implements OnInit, AfterViewInit, OnDestroy 
               premium: true,
               favorite: false,
               name: element.title,
+              description: element.description,
               artist: '',
               album: '',
               url: 'https://streamtunes-assets.s3.us-east-1.wasabisys.com/uploads/songs/' + element.web_audio_url,

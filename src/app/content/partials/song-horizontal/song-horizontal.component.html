@@ -4,5 +4,5 @@
 <div class="song-h--desc">
     <span class="song-h--name" title="{{song?.name}}">{{song?.name}}</span>
     <p class="text-truncate song-h--artist" title="{{song?.artist}}" *ngIf="song?.artist">{{song?.artist}}</p>
-    <p class="song-h--artist" title="{{song?.description}}" *ngIf="song?.description">{{song?.description}}</p>
+    <p class="song-h--desc text-muted" title="{{song?.description}}" *ngIf="song?.description">{{song?.description}}</p>
 </div>

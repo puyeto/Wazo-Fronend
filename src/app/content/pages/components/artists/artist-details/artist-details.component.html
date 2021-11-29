@@ -1,5 +1,5 @@
 <!-- Page Banner [[ Find at scss/base/core.scss ]] -->
-<div class="banner bg-artists"></div>
+<div class="banner" [ngStyle]="{'background-color': peopleBGColor, 'background-image': peoplehomeBGImage}"></div>
 
 <!-- Begin | Main Container [[ Find at scss/base/core.scss ]] -->
 <div class="main-container" *ngIf="artistDetails && artistDetails.id">
@@ -38,11 +38,11 @@
         <!-- Begin | Line Tabs [[ Find at scss/framework/components/line-tabs.scss ]] -->
         <ul appLineTabs class="nav nav-tabs line-tabs line-tabs-primary text-uppercase mb-4" id="artistDetails" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="song-tab" data-toggle="tab" href="#song" role="tab" aria-controls="song" aria-selected="true">Top Songs</a>
+                <a class="nav-link active" id="song-tab" data-toggle="tab" href="#episodes" role="tab" aria-controls="episodes" aria-selected="true">Top Episodes</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" id="album-tab" data-toggle="tab" href="#album" role="tab" aria-controls="album" aria-selected="false">Top Albums</a>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <a class="nav-link" id="bio-tab" data-toggle="tab" href="#bio" role="tab" aria-controls="bio" aria-selected="false">Biography</a>
             </li>
@@ -51,7 +51,7 @@
 
         <!-- Begin | Tab Content -->
         <div class="tab-content" id="artistDetailsContent">
-            <div class="tab-pane fade show active" id="song" role="tabpanel" aria-labelledby="song-tab">
+            <div class="tab-pane fade show active" id="episodes" role="tabpanel" aria-labelledby="song-tab">
                 <!-- Begin | Container header [[ Find at scss/base/core.scss ]] -->
                 <div class="container-header">
                     <span class="title">{{artistDetails.no_of_songs}} Results</span>
