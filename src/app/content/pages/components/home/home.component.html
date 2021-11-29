@@ -9,7 +9,7 @@
     </app-section>
 
     <!-- podcasts -->
-    <app-section *ngIf="podcasts" [section]="podcasts" [carouselButtonPositionClass]="carouselArrowPosClass3" [imageCard]="true" [artistRouteLink]="true">
+    <app-section *ngIf="podcasts" [section]="podcasts" [carouselButtonPositionClass]="carouselArrowPosClass3" [imageCard]="true" [RouterLink]="'/podcast/'">
     </app-section>
 
     <div class="row">
@@ -78,11 +78,11 @@
     </app-section> -->
 
     <!-- Artists -->
-    <app-section *ngIf="people" [section]="people" [carouselButtonPositionClass]="carouselArrowPosClass3" [imageCard]="true" [artistRouteLink]="true">
+    <app-section *ngIf="people" [section]="people" [carouselButtonPositionClass]="carouselArrowPosClass3" [imageCard]="true" [RouterLink]="'/people/'">
     </app-section>
 
     <!-- Genres -->
-    <app-section *ngIf="categories" [section]="categories" [carouselButtonPositionClass]="carouselArrowPosClass3" [secondaryCard]="true" [artistRouteLink]="true">
+    <app-section *ngIf="categories" [section]="categories" [carouselButtonPositionClass]="carouselArrowPosClass3" [secondaryCard]="true" [RouterLink]="'/category/'">
     </app-section>
 
     <!-- Playlist -->

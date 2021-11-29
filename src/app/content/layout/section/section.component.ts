@@ -16,12 +16,11 @@ export class SectionComponent implements OnInit {
   @Input() imageBorderRadiusClass = 'card-img--radius-lg';
   @Input() carouselButtonPositionClass;
   @Input() fourSlideCarousel = false;
-  @Input() artistRouteLink = false;
+  @Input() RouterLink = '';
 
   sliderConfig: any = {};
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit() {
     const prev = '<button class="btn-prev btn btn-pill btn-air btn-default btn-icon-only"><i class="la la-angle-left"></i></button>';

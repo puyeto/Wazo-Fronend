@@ -136,8 +136,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     const playlistItems = this.playlist.items;
     for (const playlistItem of playlistItems) {
       playlistItem.songs = this.songsConfigService.songsList;
-      console.log(playlistItem.songs);
     }
+
   }
 
   // Initialize radio object for section
