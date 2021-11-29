@@ -6,7 +6,8 @@ export class SongsConfig {
 
   constructor(private api: ApiService) {
     this.config = {
-      items: []
+      items: [],
+      banner: ''
     };
 
     this.api.postWithAuth("home/first/list", {}).subscribe((res: any) => {
@@ -14,6 +15,7 @@ export class SongsConfig {
       if (res.success) {
         var datas = res.data;
         var trending = datas.trending.data;
+        this.config.banner = datas.banner.data[0].picture;
 
         trending.forEach(element => {
           this.config.items.push(

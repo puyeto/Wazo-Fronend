@@ -16,6 +16,10 @@ export class SongsConfigService {
     return this.songsConfig.config.items;
   }
 
+  get banner() {
+    return this.songsConfig.config.banner;
+  }
+
   get defaultSong() {
     return this.songsConfig.config.items[0];
   }
