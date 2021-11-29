@@ -66,11 +66,11 @@ const routes: Routes = [
         component: MusicComponent,
       },
       {
-        path: 'artists',
+        path: 'people',
         component: ArtistsComponent
       },
       {
-        path: 'artist/:id/details',
+        path: 'people/:id/details',
         component: ArtistDetailsComponent,
       },
       {

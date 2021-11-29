@@ -25,7 +25,7 @@ export class MenuConfig {
           {
             title: 'People',
             icon: 'la la-users',
-            page: '/artists'
+            page: '/people'
           },
           {
             title: 'Categories',

@@ -4,12 +4,12 @@
         <!-- Begin | Search Result List -->
         <div class="search-item">
             <div class="search-item-header">
-                <span class="search-item-title">Artists</span>
-                <a class="search-item-link ml-auto" (click)="goToPage('artists')">View All</a>
+                <span class="search-item-title">People</span>
+                <a class="search-item-link ml-auto" (click)="goToPage('people')">View All</a>
             </div>
             <div class="search-item-body row">
                 <div class="col-xl-2 col-md-4 col-6" *ngFor="let artist of artistsList">
-                    <app-image-card [item]="artist" [imageBorderRadiusClass]="'card-img--radius-md'" [routeLink]="'/artist/' + artist.id + '/details'"></app-image-card>
+                    <app-image-card [item]="artist" [imageBorderRadiusClass]="'card-img--radius-md'" [routeLink]="'/people/' + artist.id + '/details'"></app-image-card>
                 </div>
             </div>
         </div>

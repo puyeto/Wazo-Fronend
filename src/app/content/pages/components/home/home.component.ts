@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   songsList: any = [];
   topCharts: any = {};
   newRelease: any = {};
-  artists: any = {};
+  people: any = {};
   artistList: any = [];
   retro: any = {};
   playlist: any = {};
@@ -98,15 +98,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   // Initialize music artists object for section
   initArtists() {
-    this.artists = {
+    this.people = {
       title: 'People',
       subTitle: 'Select you best to listen',
-      page: '/artists',
+      page: '/people',
       items: this.artistsConfigService.artistsList
     };
 
     setTimeout(async () => {
-      this.artistList = await this.artists.items;
+      this.artistList = await this.people.items;
       // Just takes first 6 index of array for ui
       this.artistList = this.artistList.slice(0, 7);
     }, 2000);
