@@ -94,7 +94,7 @@ const routes: Routes = [
         component: AlbumsComponent
       },
       {
-        path: 'album/:id/details',
+        path: 'podcast/:id/details',
         component: AlbumDetailsComponent
       },
       {

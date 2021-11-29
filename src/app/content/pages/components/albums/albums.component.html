@@ -8,7 +8,7 @@
         <div class="d-flex flex-wrap align-items-end">
             <div class="flex-grow-1">
                 <h4>Podcasts</h4>
-                <span class="title">{{albums.record}} Results</span>
+                <span class="title">{{podcasts.record}} Results</span>
             </div>
         </div>
         <div class="ml-auto d-flex align-items-center">
@@ -24,8 +24,8 @@
     <!-- Begin | Section [[ Find at scss/base/core.scss ]] -->
     <div class="section">
         <div class="row custom-card-list">
-            <div class="col-xl-2 col-lg-4 col-sm-6" *ngFor="let album of albums.list">
-                <app-image-card [item]="album" [routerLink]="'/album/' + album.id + '/details'" [imageBorderRadiusClass]="'card-img--radius-md'"></app-image-card>
+            <div class="col-xl-2 col-lg-4 col-sm-6" *ngFor="let album of podcasts.list">
+                <app-image-card [item]="album" [routerLink]="'/podcast/' + album.id + '/details'" [imageBorderRadiusClass]="'card-img--radius-md'"></app-image-card>
             </div>
         </div>
     </div>

@@ -9,7 +9,7 @@ import { AlbumsConfigService } from '../../../../core/services/albums-config.ser
 })
 export class AlbumsComponent implements OnInit, AfterViewInit {
 
-  albums: any = {};
+  podcasts: any = {};
 
   constructor(private loadingService: LoadingService,
     private albumsConfigService: AlbumsConfigService) { }
@@ -24,8 +24,8 @@ export class AlbumsComponent implements OnInit, AfterViewInit {
 
   // Initialize albums
   initAlbums() {
-    this.albums.list = this.albumsConfigService.albumsList;
-    setTimeout(async () => { this.albums.record = await this.albumsConfigService.albumCount; }, 2000);
+    this.podcasts.list = this.albumsConfigService.albumsList;
+    setTimeout(async () => { this.podcasts.record = await this.albumsConfigService.albumCount; }, 2000);
 
   }
 

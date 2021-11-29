@@ -15,6 +15,8 @@ export class AlbumDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   albumId: number;
   albumDetails: any;
   skip = 0;
+  podcastBGColor = '#fff';
+  podcasthomeBGImage = 'url(hoe.jpg)';
 
   routeSubscription: Subscription;
 
@@ -48,6 +50,8 @@ export class AlbumDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
           no_of_songs: res.movie_detail.songs_count
         }
 
+        this.podcasthomeBGImage = 'url(' + this.albumDetails.cover_art_url + ')';
+
         let songs = res.data;
         this.albumDetails.songs = [];
         songs.forEach(element => {
@@ -57,11 +61,12 @@ export class AlbumDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
               premium: true,
               favorite: false,
               name: element.title,
+              description: element.description,
               artist: '',
               album: '',
               url: 'https://streamtunes-assets.s3.us-east-1.wasabisys.com/uploads/songs/' + element.web_audio_url,
-              cover_art_url: element.picture === 'other-placeholder.jpg' ? './assets/images/cover/large/3.jpg' : element.picture,
-              cover_url: element.picture === 'other-placeholder.jpg' ? './assets/images/cover/large/3.jpg' : element.picture,
+              cover_art_url: element.picture == '' || element.picture === 'other-placeholder.jpg' ? './assets/images/cover/large/3.jpg' : element.picture,
+              cover_url: element.picture == '' || element.picture === 'other-placeholder.jpg' ? './assets/images/cover/large/3.jpg' : element.picture,
               ratings: 4.5,
               composer: '',
               lyricist: '',
