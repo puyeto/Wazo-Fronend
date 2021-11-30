@@ -14,8 +14,8 @@ import { Config } from '../../../config/config';
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-
   @ViewChild('headerBackdrop', { static: false }) backdrop: ElementRef;
+  public config: Config = new Config();
   headerClasses = 'bg-primary';
 
   language: any = {};
@@ -40,6 +40,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.currentUser = this.localStorageService.getCurrentUser();
     if (this.themeSkin) {
       this.headerClasses = 'bg-' + Config.THEME_CLASSES[this.themeSkin.header];
+    } else {
+      this.themeSkin = this.config.config.themeSkin;
     }
 
     this.searchSubscription = this.searchService.searchStatus.subscribe((value) => {

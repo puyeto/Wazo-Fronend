@@ -15,12 +15,9 @@
 
         <!-- Begin | Header Options -->
         <ul class="header-options d-flex align-items-center">
-            <!-- <li>
-                <a href="javascript:;" class="language" (click)="openLanguagesModal()">
-                    <span>{{language.title}}</span>
-                    <img [src]="language.image" alt="">
-                </a>
-            </li> -->
+            <li>
+                <span class="text-muted">{{themeSkin.theme==='dark' ? 'Light' : 'Dark'}}</span>
+            </li>
             <li>
                 <div class="switch switch-primary ml-auto">
                     <input type="checkbox" id="theme" [checked]="themeSkin.theme==='dark'" (change)="setThemeSkin($event)">
