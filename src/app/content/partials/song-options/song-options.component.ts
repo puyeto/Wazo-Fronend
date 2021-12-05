@@ -21,7 +21,7 @@ export class SongOptionsComponent implements OnInit {
     this.icon = 'la ' + this.icon;
   }
 
-  addToWishList() {
+  addFavorite() {
     this.api.postWithAuth("wishlist/operations", { song_id: this.song.id }).subscribe((res: any) => {
       console.log(res)
       if (res.success) {

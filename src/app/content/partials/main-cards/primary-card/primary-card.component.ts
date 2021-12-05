@@ -25,7 +25,7 @@ export class PrimaryCardComponent implements OnInit {
     this.classes = 'custom-card--img ' + this.imageBorderRadiusClass;
   }
 
-  addToWishList() {
+  addFavorite() {
     this.api.postWithAuth("wishlist/operations", { song_id: this.song.id }).subscribe((res: any) => {
       console.log(res)
       if (res.success) {
