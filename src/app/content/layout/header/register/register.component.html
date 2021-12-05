@@ -3,9 +3,9 @@
         <div class="modal-header border-bottom-0 pb-0">
             <button type="button" class="close" (click)="close()">&times;</button>
         </div>
-        <h6 class="modal-title text-center mb-3">Login For Awesome Experience</h6>
+        <h6 class="modal-title text-center mb-3">Register For Awesome Experience</h6>
         <div class="modal-body">
-            <form action="#" [formGroup]="login" class="mx-4 pb-3" (ngSubmit)="submitLogin()">
+            <form action="#" [formGroup]="register" class="mx-4 pb-3" (ngSubmit)="submitLogin()" autocomplete="off">
                 <!-- <div class="social-login">
                     <a href="javascript:void(0);" class="w-100 btn btn-social btn-facebook btn-default-air">
                         <span class="btn-content">
@@ -20,6 +20,13 @@
                         </span>
                     </a>
                 </div> -->
+                <div class="form-group">
+                    <input type="text" formControlName="fullname" id="fullname" class="form-control" placeholder="Full Name" minlength="4" required>
+                    <div class="invalid-feedback" *ngIf="(formSubmitted && fullname.invalid) &&
+                    (fullname.dirty || fullname.touched)" ngClass="d-block">
+                        <span *ngIf="fullname.errors.required">Please fill this field</span>
+                    </div>
+                </div>
                 <div class="form-group">
                     <input type="text" formControlName="email" id="email" class="form-control" placeholder="Email" required>
                     <div class="invalid-feedback" *ngIf="(formSubmitted && email.invalid) &&
@@ -37,9 +44,9 @@
                 </div>
                 <button type="submit" class="btn btn-block btn-bold btn-air btn-info load-page">Login</button>
             </form>
-            <span class="mx-4 pb-5">Dont have an account?
-              <a href="javascript:void(0);" class="link" (click)="openRegisterModal()">Register</a>
-            </span>
+            <!-- <span class="mx-4 pb-5">Have an account?
+              <a href="javascript:void(0);" class="link" (click)="openLoginModal()">Sign In</a>
+            </span> -->
         </div>
     </div>
 </div>

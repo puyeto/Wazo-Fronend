@@ -28,6 +28,7 @@
         "ngx-perfect-scrollbar": "^8.0.0",
         "ngx-simple-modal": "^1.4.3",
         "ngx-slick-carousel": "^0.4.6",
+        "ngx-toastr": "^11.3.3",
         "rxjs": "~6.4.0",
         "slick-carousel": "^1.8.1",
         "tslib": "^1.10.0",

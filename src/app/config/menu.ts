@@ -91,11 +91,11 @@ export class MenuConfig {
             icon: 'ion-md-contact',
             page: '/profile'
           },
-          {
-            title: 'Your Plan',
-            icon: 'ion-md-radio-button-off',
-            page: '/plan'
-          },
+          // {
+          //   title: 'Your Plan',
+          //   icon: 'ion-md-radio-button-off',
+          //   page: '/plan'
+          // },
           {
             title: 'Settings',
             icon: 'ion-md-settings',

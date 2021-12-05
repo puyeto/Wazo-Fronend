@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { SimpleModalComponent } from 'ngx-simple-modal';
+import { SimpleModalComponent, SimpleModalService } from 'ngx-simple-modal';
 import { Router } from '@angular/router';
 
 import { LocalStorageService } from '../../../../core/services/local-storage.service';
 import { Config } from '../../../../config/config';
+import { RegisterComponent } from '../register/register.component';
+import { ApiService } from '../../../../service/api.service';
 
 @Component({
   selector: 'app-login',
@@ -15,24 +17,25 @@ export class LoginComponent extends SimpleModalComponent<any, any> implements On
   login: any;
   formSubmitted = false;
 
-  constructor(private localStorageService: LocalStorageService, private router: Router) {
+  constructor(private localStorageService: LocalStorageService, private router: Router,
+    private simpleModalService: SimpleModalService, private api: ApiService) {
     super();
   }
 
   ngOnInit() {
     this.login = new FormGroup({
-      userName: new FormControl('listen_app@kri8thm.com', [
+      email: new FormControl('', [
         Validators.required,
         Validators.email
       ]),
-      password: new FormControl('123456789', [
+      password: new FormControl('', [
         Validators.required
       ]),
     });
   }
 
-  get userName() {
-    return this.login.get('userName');
+  get email() {
+    return this.login.get('email');
   }
 
   get password() {
@@ -45,20 +48,38 @@ export class LoginComponent extends SimpleModalComponent<any, any> implements On
       return false;
     }
 
-    // You can replace this object with your user object
-    const user = {
-      id: 1,
-      role: 'ADMIN',
-      userName: this.login.controls.userName.value,
-      image: './assets/images/users/thumb.jpg',
-      name: 'Halo Admin'
+    const login_form = {
+      email: this.login.controls.email.value,
+      password: this.login.controls.password.value
     };
-    this.localStorageService.setLocalStorage(Config.CURRENT_USER, user);
+
+    this.api.postWithAuth("login", login_form).subscribe((res: any) => {
+      console.log(res);
+      if (res.success) {
+        this.localStorageService.setLocalStorage(Config.CURRENT_USER, res.data);
+        this.close();
+        let currentUrl = this.router.url;
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+        this.router.navigate([currentUrl]);
+      } else {
+        console.log(res.error);
+      }
+    }, () => {
+      console.log("oops something went wrong");
+    });
+
+
+  }
+
+  openRegisterModal() {
     this.close();
-    let currentUrl = this.router.url;
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate([currentUrl]);
+    const modal = this.simpleModalService.addModal(RegisterComponent, {})
+      .subscribe((isConfirmed) => {
+        if (isConfirmed) {
+        } else {
+        }
+      });
   }
 
 }

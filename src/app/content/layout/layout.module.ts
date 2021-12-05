@@ -24,67 +24,73 @@ import { ProfileComponent } from './header/profile/profile.component';
 import { LanguageComponent } from './header/language/language.component';
 import { SearchComponent } from './header/search/search.component';
 import { LoginComponent } from './header/login/login.component';
+import { RegisterComponent } from './header/register/register.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-    suppressScrollX: true
+  suppressScrollX: true
 };
 
 @NgModule({
-    declarations: [
-        AsideLeftComponent,
-        AsideLeftHeaderComponent,
-        AsideRightComponent,
-        MenuSectionComponent,
-        HeaderComponent,
-        FooterComponent,
-        PlayerComponent,
-        SectionComponent,
-        ProfileComponent,
-        LanguageComponent,
-        SearchComponent,
-        LoginComponent
-    ],
-    exports: [
-        AsideLeftComponent,
-        AsideLeftHeaderComponent,
-        AsideRightComponent,
-        MenuSectionComponent,
-        HeaderComponent,
-        FooterComponent,
-        PlayerComponent,
-        SectionComponent,
-        ProfileComponent,
-        SearchComponent,
-        LoginComponent
-    ],
-    imports: [
-        CommonModule,
-        PerfectScrollbarModule,
-        SlickCarouselModule,
-        PartialsModule,
-        RouterModule,
-        ReactiveFormsModule,
-        SimpleModalModule.forRoot({container: document.body})
-    ],
-    entryComponents: [
-        LanguageComponent,
-        LoginComponent
-    ],
-    providers: [
-        {
-            provide: PERFECT_SCROLLBAR_CONFIG,
-            useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-        },
-        {
-            provide: DefaultSimpleModalOptionConfig,
-            useValue: {...defaultSimpleModalOptions, ...{
-                wrapperDefaultClasses: 'simple-modal modal fade',
-                wrapperClass: 'show',
-                closeOnEscape: true,
-                closeOnClickOutside: true,
-                animationDuration: 1000,
-            }}
+  declarations: [
+    AsideLeftComponent,
+    AsideLeftHeaderComponent,
+    AsideRightComponent,
+    MenuSectionComponent,
+    HeaderComponent,
+    FooterComponent,
+    PlayerComponent,
+    SectionComponent,
+    ProfileComponent,
+    LanguageComponent,
+    SearchComponent,
+    LoginComponent,
+    RegisterComponent
+  ],
+  exports: [
+    AsideLeftComponent,
+    AsideLeftHeaderComponent,
+    AsideRightComponent,
+    MenuSectionComponent,
+    HeaderComponent,
+    FooterComponent,
+    PlayerComponent,
+    SectionComponent,
+    ProfileComponent,
+    SearchComponent,
+    LoginComponent,
+    RegisterComponent
+  ],
+  imports: [
+    CommonModule,
+    PerfectScrollbarModule,
+    SlickCarouselModule,
+    PartialsModule,
+    RouterModule,
+    ReactiveFormsModule,
+    SimpleModalModule.forRoot({ container: document.body })
+  ],
+  entryComponents: [
+    LanguageComponent,
+    LoginComponent,
+    RegisterComponent
+  ],
+  providers: [
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    },
+    {
+      provide: DefaultSimpleModalOptionConfig,
+      useValue: {
+        ...defaultSimpleModalOptions, ...{
+          wrapperDefaultClasses: 'simple-modal modal fade',
+          wrapperClass: 'show',
+          closeOnEscape: true,
+          closeOnClickOutside: true,
+          animationDuration: 1000,
         }
-    ]
+      }
+    }
+  ]
 })
 export class LayoutModule { }
