@@ -3,9 +3,9 @@
 </a>
 <ul class="dropdown-menu">
     <li class="dropdown-item">
-        <a class="dropdown-link" (click)="addFavorite()">
+        <a class="dropdown-link" (click)="addToWishList()">
             <i class="la la-heart-o"></i>
-            <span>Favorite</span>
+            <span>Wishlist</span>
         </a>
     </li>
     <li class="dropdown-item">
@@ -14,12 +14,12 @@
             <span>Add to Playlist</span>
         </a>
     </li>
-    <li class="dropdown-item">
+    <!-- <li class="dropdown-item">
         <a [href]="song?.url" class="dropdown-link" download>
             <i class="la la-download"></i>
             <span>Download</span>
         </a>
-    </li>
+    </li> -->
     <li class="dropdown-item">
         <a class="dropdown-link" (click)="shareSong()">
             <i class="la la-share-alt"></i>

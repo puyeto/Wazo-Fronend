@@ -22,7 +22,7 @@ export class SongsConfig {
             {
               id: element.song_id,
               premium: true,
-              favorite: false,
+              favorite: element.wishlist_status,
               name: element.title,
               artist: '',
               album: '',

@@ -59,7 +59,7 @@ export class AlbumDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
             {
               id: element.song_id,
               premium: true,
-              favorite: false,
+              favorite: element.wishlist_status,
               name: element.title,
               description: element.description,
               artist: '',
