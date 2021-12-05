@@ -8,6 +8,8 @@ import { LocalStorageService } from '../../../../core/services/local-storage.ser
 import { Config } from '../../../../config/config';
 import { RegisterComponent } from '../register/register.component';
 import { ApiService } from '../../../../service/api.service';
+import { NotificationService } from 'src/app/service/notification.service';
+import { NotificationType } from '../../../../service/notification.message';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +21,8 @@ export class LoginComponent extends SimpleModalComponent<any, any> implements On
   formSubmitted = false;
 
   constructor(private localStorageService: LocalStorageService, private router: Router,
-    private simpleModalService: SimpleModalService, private api: ApiService, private toastr: ToastrService) {
+    private simpleModalService: SimpleModalService, private api: ApiService,
+    private notificationService: NotificationService) {
     super();
   }
 
@@ -55,8 +58,11 @@ export class LoginComponent extends SimpleModalComponent<any, any> implements On
     };
 
     this.api.postWithAuth("login", login_form).subscribe((res: any) => {
-      console.log(res);
       if (res.success) {
+        this.notificationService.sendMessage({
+          message: res.message,
+          type: NotificationType.success
+        });
         this.localStorageService.setLocalStorage(Config.CURRENT_USER, res.data);
         this.close();
         let currentUrl = this.router.url;
@@ -64,7 +70,10 @@ export class LoginComponent extends SimpleModalComponent<any, any> implements On
         this.router.onSameUrlNavigation = 'reload';
         this.router.navigate([currentUrl]);
       } else {
-        this.toastr.error('Error!', res.error);
+        this.notificationService.sendMessage({
+          message: res.error,
+          type: NotificationType.error
+        });
       }
     }, () => {
       console.log("oops something went wrong");

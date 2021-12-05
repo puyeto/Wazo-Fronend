@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { LocalStorageService } from '../core/services/local-storage.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +13,7 @@ export class ApiService {
   public endTime: any;
   public myChargingSlot: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private localStorageService: LocalStorageService) { }
 
   public postWithOutAuth(endPoint: string, data: any) {
     return this.http.post(`${this.baseURL}${endPoint}`, data);
@@ -22,8 +23,10 @@ export class ApiService {
   }
 
   public postWithAuth(endPoint: string, object: any) {
-    let userId = (localStorage.getItem('userId') !== '' && localStorage.getItem('userId') !== null && localStorage.getItem('userId') !== undefined) ? localStorage.getItem('userId') : '';
-    let accessToken = (localStorage.getItem('accessToken') !== '' && localStorage.getItem('accessToken') !== null && localStorage.getItem('accessToken') !== undefined) ? localStorage.getItem('accessToken') : '';
+    const userDetails = this.localStorageService.getCurrentUser()
+
+    let userId = (userDetails && userDetails.user_id !== '' && userDetails.user_id !== null && userDetails.user_id !== undefined) ? userDetails.user_id : '';
+    let accessToken = (userDetails && userDetails.token !== '' && userDetails.token !== null && userDetails.token !== undefined) ? userDetails.token : '';
     const url = this.baseURL + endPoint;
 
     let formData: any = new FormData();
@@ -49,14 +52,6 @@ export class ApiService {
     formData.append('device_type', environment.DEVICE_TYPE);
     formData.append('device_token', environment.DEVICE_TOKEN);
     return this.http.post(`${url}`, formData);
-  }
-
-  public getWithAuth(endPoint: string) {
-    const tok = 'Bearer ' + localStorage.getItem('token');
-    let headers = new HttpHeaders();
-    headers = headers.set('Authorization', tok);
-    headers = headers.set('Accept', 'application/json');
-    return this.http.get(`${this.baseURL}${endPoint}`, { headers });
   }
 
 }

@@ -42,7 +42,10 @@
                         <span *ngIf="password.errors.required">Please fill this field</span>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-block btn-bold btn-air btn-info load-page">Login</button>
+                <button type="submit" [disabled]="formSubmitted" class="btn btn-block btn-bold btn-air btn-info load-page">
+                  <span *ngIf="!formSubmitted">Register</span>
+                  <li *ngIf="formSubmitted" class="fa fa-spin fa-spinner"></li>
+                </button>
             </form>
             <!-- <span class="mx-4 pb-5">Have an account?
               <a href="javascript:void(0);" class="link" (click)="openLoginModal()">Sign In</a>
