@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SimpleModalComponent, SimpleModalService } from 'ngx-simple-modal';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 import { LocalStorageService } from '../../../../core/services/local-storage.service';
 import { Config } from '../../../../config/config';
@@ -18,7 +19,7 @@ export class LoginComponent extends SimpleModalComponent<any, any> implements On
   formSubmitted = false;
 
   constructor(private localStorageService: LocalStorageService, private router: Router,
-    private simpleModalService: SimpleModalService, private api: ApiService) {
+    private simpleModalService: SimpleModalService, private api: ApiService, private toastr: ToastrService) {
     super();
   }
 
@@ -63,7 +64,7 @@ export class LoginComponent extends SimpleModalComponent<any, any> implements On
         this.router.onSameUrlNavigation = 'reload';
         this.router.navigate([currentUrl]);
       } else {
-        console.log(res.error);
+        this.toastr.error('Error!', res.error);
       }
     }, () => {
       console.log("oops something went wrong");
