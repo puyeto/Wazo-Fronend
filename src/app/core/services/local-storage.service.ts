@@ -40,6 +40,10 @@ export class LocalStorageService {
     return this.getLocalStorage(Config.CURRENT_USER);
   }
 
+  getSystemSettings() {
+    return this.getLocalStorage(Config.SYSTEM_SETTING);
+  }
+
   getThemeSkin() {
     return this.getLocalStorage(Config.THEME_SKIN);
   }

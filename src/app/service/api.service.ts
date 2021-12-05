@@ -54,4 +54,9 @@ export class ApiService {
     return this.http.post(`${url}`, formData);
   }
 
+  public get(endPoint: string) {
+    const url = this.baseURL + endPoint;
+    return this.http.get(`${url}`);
+  }
+
 }

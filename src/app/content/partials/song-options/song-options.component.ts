@@ -22,6 +22,7 @@ export class SongOptionsComponent implements OnInit {
   }
 
   addFavorite() {
+    console.log(this.song)
     this.api.postWithAuth("wishlist/operations", { song_id: this.song.id }).subscribe((res: any) => {
       console.log(res)
       if (res.success) {
